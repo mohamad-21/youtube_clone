@@ -87,7 +87,7 @@ const VideoDetail = () => {
                 {parseInt(likeCount).toLocaleString()} Likes
               </Typography>
             </Stack>
-            <Typography variant="caption" fontSize={13} lineHeight={2} p={2.5} borderRadius={1.5} sx={{whiteSpace: 'pre-wrap', background: '#1f1f1f'}}dangerouslySetInnerHTML={{ __html: description }} >
+            <Typography variant="caption" fontSize={13} lineHeight={2} p={2} borderRadius={1.5} sx={{whiteSpace: 'pre-wrap', background: '#1f1f1f'}}dangerouslySetInnerHTML={{ __html: description }} >
               </Typography>
           </Stack>
           <Box mt={12}>
@@ -101,7 +101,7 @@ const VideoDetail = () => {
         </Box>
         <Box maxWidth="270px" mt={{xs: 8, md: 0}}>
           <Typography variant="h5" mb={3}>Related Videos</Typography>
-          {relatedVideos && <Videos direction="column" videos={relatedVideos} />}
+          {relatedVideos && <Videos direction="column" videos={relatedVideos} width="270px" height="151px" />}
         </Box>
       </Stack>
     </Box>

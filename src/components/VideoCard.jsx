@@ -1,18 +1,36 @@
-import { Card, CardContent, Typography } from '@mui/material'
+import { Card, CardContent, CircularProgress, Typography } from '@mui/material'
 import { CheckCircle } from "@mui/icons-material"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
-const VideoCard = ({video}) => {
+const VideoCard = ({video, width, height}) => {
 
   const videoId = video.id.videoId
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const { snippet } = video;
+  const layout = (width && height) ? {
+    width: width,
+    height: height
+  } : null;
 
   return (
     <Card>
-      <div style={{lineHeight: 0}}>
+      <div style={{lineHeight: 0, position: 'relative', ...layout}}>
         <Link to={`/video/${videoId}`}>
-          <img src={snippet?.thumbnails?.medium?.url || snippet?.thumbnails?.hight?.url || snippet?.thumbnails?.default?.url} alt="waeaw" width="100%" height="100%" style={{lineHeight: 0}} loading="lazy" />
+          <img src={snippet?.thumbnails?.medium?.url || snippet?.thumbnails?.hight?.url || snippet?.thumbnails?.default?.url} alt="waeaw" width="100%" height="100%" style={{lineHeight: 0}} loading="lazy" onLoad={() => setImageLoaded(true)} />
+          {!imageLoaded && (
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: '#000',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <CircularProgress color="info" />
+            </div>
+          )}
         </Link>
       </div>
       <CardContent sx={{background: '#000', px:0}}>

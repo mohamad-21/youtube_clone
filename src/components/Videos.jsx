@@ -1,7 +1,7 @@
 import { Box, Skeleton } from "@mui/material"
 import { VideoCard, ChannelCard } from './'
 
-const Videos = ({videos, loading, direction}) => {
+const Videos = ({videos, loading, direction, width, height}) => {
 
   return (
     <Box display="grid" gridTemplateColumns={`${direction === 'column' ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))'}`} gap={2}>
@@ -21,7 +21,7 @@ const Videos = ({videos, loading, direction}) => {
               </>
             ) : (
               <>
-                {item.id.videoId && <VideoCard video={item} />}
+                {item.id.videoId && <VideoCard width={width} height={height} video={item} />}
                 {item.id.channelId && <ChannelCard channelDetail={item} />}
               </>
             )}
