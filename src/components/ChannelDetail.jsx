@@ -12,8 +12,6 @@ const ChannelDetail = () => {
   const [error, setError] = useState(null);
   const { id } = useParams();
 
-  console.log(channelDetail)
-
   useEffect(() => {
 
     setLoading(true);
@@ -32,7 +30,9 @@ const ChannelDetail = () => {
       })
       .finally(() => setLoading(false));
 
-    document.documentElement.scrollTop = 0;
+    document.documentElement.scrollIntoView({
+      behavior: 'smooth'
+    });
 
   }, [id]);
 

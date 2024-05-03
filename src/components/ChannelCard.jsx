@@ -1,8 +1,7 @@
-import { Typography, CardMedia, Stack, Box, Button, Dialog, DialogContent, DialogTitle, IconButton, DialogContentText } from '@mui/material'
+import { Typography, Stack, Box, Button, Dialog, DialogContent, DialogTitle, IconButton, DialogContentText } from '@mui/material'
 import { CheckCircle } from "@mui/icons-material"
 import { Link } from "react-router-dom"
 import numeral from "numeral";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close'
 
@@ -16,11 +15,11 @@ const ChannelCard = ({channelDetail, style, showDetail=false}) => {
 
   return (
     <>
-      <Stack alignItems="center" justifyContent="center" sx={{height: '100%'}} py={4}>
+      <Stack alignItems="center" justifyContent="center" py={4}>
         <Link to={`/channel/${channelId}`}>
           <img src={snippet?.thumbnails?.medium?.url || snippet?.thumbnails?.high?.url || snippet?.thumbnails?.default?.url} style={{
-            width: 170,
-            height: 170,
+            width: 120,
+            height: 120,
             borderRadius: '50%',
             ...style
           }} />
@@ -41,11 +40,12 @@ const ChannelCard = ({channelDetail, style, showDetail=false}) => {
           <Box sx={{p:3, maxWidth: 'sm'}}>
             {snippet?.description.length > 30 ? (
               <Button sx={{
+                fontSize: 11,
                 color: 'lightgray',
-                whiteSpace: 'pre-wrap'
+                whiteSpace: 'pre-wrap',
+                textAlign: 'left'
               }} onClick={() => setShowDescription(true)}>
-                {snippet?.description.slice(0,30)} 
-                <ChevronRightIcon />
+                {snippet?.description.slice(0,30)}... 
               </Button>
             ) : (
               <Typography variant="subtitle1" sx={{

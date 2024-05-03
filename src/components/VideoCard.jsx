@@ -16,17 +16,15 @@ const VideoCard = ({video, width, height}) => {
 
   return (
     <Card>
-      <div style={{lineHeight: 0, position: 'relative', ...layout}}>
+      <div style={{position: 'relative', ...layout, lineHeight: 0}}>
         <Link to={`/video/${videoId}`}>
-          <img src={snippet?.thumbnails?.medium?.url || snippet?.thumbnails?.hight?.url || snippet?.thumbnails?.default?.url} alt="waeaw" width="100%" height="100%" style={{lineHeight: 0}} loading="lazy" onLoad={() => setImageLoaded(true)} />
-          {!imageLoaded && (
+          <img src={snippet?.thumbnails?.medium?.url || snippet?.thumbnails?.default?.url} alt="waeaw" width="100%" height="100%" style={{visibility: imageLoaded ? 'visible' : 'unvisible', lineHeight: 0}} loading="lazy" onLoad={() => setImageLoaded(true)} />
+            {!imageLoaded && (
             <div style={{
-              position: 'absolute',
-              inset: 0,
-              background: '#000',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              height: height || 200
             }}>
               <CircularProgress color="info" />
             </div>

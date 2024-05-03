@@ -13,10 +13,10 @@ const Videos = ({videos, loading, direction, width, height}) => {
           <Box key={idx}>
             {loading ? (
               <>
-                <Skeleton variant="rectangular" width="100%" height={200} sx={{background: 'gray'}} />
+                <Skeleton variant="rectangular" width="100%" height={height || 200} animation="wave"  />
                 <Box sx={{pt:0.5}}>
-                  <Skeleton sx={{background: 'gray'}} width="100%" />
-                  <Skeleton sx={{background: 'gray'}} width="60%" />
+                  <Skeleton animation="wave" width="100%" />
+                  <Skeleton animation="wave" width="60%" />
                 </Box>
               </>
             ) : (

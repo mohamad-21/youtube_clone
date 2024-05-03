@@ -19,7 +19,11 @@ const Feed = ({openSidebar, setOpenSidebar}) => {
       .catch(err => {
         setError(err.message);
       })
-      .finally(() => setLoading(false))
+      .finally(() => setLoading(false));
+
+      document.documentElement.scrollIntoView({
+        behavior: 'smooth'
+      });
 
   }, [category]);
 
@@ -50,7 +54,7 @@ const Feed = ({openSidebar, setOpenSidebar}) => {
         <Typography variant="h4" color={lightBlue[400]} sx={{mb: 4}}>
           {category || 'Latest'} <span style={{color: '#fff'}}>Videos</span>
         </Typography>
-        <Videos videos={videos} loading={loading} width="437px" height="245px" />
+        <Videos videos={videos} loading={loading} />
       </Box>
     </Stack>
   )

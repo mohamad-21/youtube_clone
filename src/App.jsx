@@ -21,21 +21,19 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-        <BrowserRouter>
-          <Paper sx={{background: '#000'}}>
-            <Navbar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
-            <Paper sx={{minHeight: '86.5vh', py:4, background: 'transparent'}}>
-              <Routes>
-                <Route path="/" element={<Feed openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />} />
-                <Route path="/category/:category" element={<Feed openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />} />
-                <Route path="/video/:id" element={<VideoDetail />} />
-                <Route path="/channel/:id" element={<ChannelDetail />} />
-                <Route path="/search/:searchTerm" element={<SearchFeed />} />
-              </Routes>
-            </Paper>
-            <Footer />
-          </Paper>
-        </BrowserRouter>
+        <Paper sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: '#000', minHeight: '100vh'}}>
+          <Navbar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
+          <Box sx={{minHeight: '86.5vh', py:4}}>
+            <Routes>
+              <Route path="/" element={<Feed openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />} />
+              <Route path="/category/:category" element={<Feed openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />} />
+              <Route path="/video/:id" element={<VideoDetail />} />
+              <Route path="/channel/:id" element={<ChannelDetail />} />
+              <Route path="/search/:searchTerm" element={<SearchFeed />} />
+            </Routes>
+          </Box>
+          <Footer />
+        </Paper>
     </ThemeProvider>
   )
 }

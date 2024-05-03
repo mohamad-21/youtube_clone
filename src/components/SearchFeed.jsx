@@ -21,7 +21,11 @@ const Feed = () => {
       .catch(err => {
         setError(err.message);
       })
-      .finally(() => setLoading(false))
+      .finally(() => setLoading(false));
+
+      document.documentElement.scrollIntoView({
+        behavior: 'smooth'
+      });
 
   }, [searchTerm]);
 

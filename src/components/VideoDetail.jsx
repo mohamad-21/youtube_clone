@@ -38,7 +38,9 @@ const VideoDetail = () => {
         setError(err.message);
       })
 
-    document.documentElement.scrollTop = 0;
+      document.documentElement.scrollIntoView({
+        behavior: 'smooth'
+      });
 
   }, [id]);
 
